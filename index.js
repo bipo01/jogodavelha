@@ -23,12 +23,6 @@ let vencedor = false;
 
 allSquares.forEach((el, i) => {
     el.addEventListener("click", () => {
-        if (arrO.length == 5 && arrX.length == 4) {
-            jogando = false;
-            resultado.textContent = `Deu velha!`;
-            playerText.innerHTML = `<button id="newGame">Novo jogo</button>`;
-        }
-
         if (!el.textContent && jogando) {
             el.textContent = jogadorAtual;
 
@@ -42,6 +36,12 @@ allSquares.forEach((el, i) => {
                 player = player === 1 ? 2 : 1;
                 playerText.textContent = `Jogador ${player}`;
             }
+        }
+
+        if (arrO.length == 5 && arrX.length == 4 && !vencedor) {
+            jogando = false;
+            resultado.textContent = `Deu velha!`;
+            playerText.innerHTML = `<button id="newGame">Novo jogo</button>`;
         }
     });
 });
